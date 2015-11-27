@@ -1,3 +1,10 @@
+# Dolphin
+.directory
+
+# Editor
+*~
+*.swp
+
 # Logs
 logs
 *.log
