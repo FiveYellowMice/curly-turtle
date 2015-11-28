@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+var config = {
+	port: 8081,
+	baseurl: ""
+};
+
+process.argv.slice(2).forEach(function (val, index, array) {
+	switch (val) {
+		case "-p":
+		case "--port":
+			var arg = Number(array[index + 1]);
+			if ( isNaN(arg) === false ) {
+				config.port = arg;
+			} else {
+				invalidArgument(val + " " + array[index + 1]);
+			}
+			break;
+		case "-h":
+		case "--help":
+			help();
+			process.exit();
+		case "-v":
+		case "--version":
+			version();
+			process.exit();
+		case "--baseurl":
+			config.baseurl = array[index + 1];
+			break;
+		default:
+			if ( /^-/.test(array[index - 1]) === false ) {
+				invalidArgument(val);
+			}
+	}
+});
+
+function help() {
+	version();
+	console.log(
+		"Usage: curly-turtle [OPTIONS]...\n" +
+		"    -p, --port       Specify server port (default: 8081)\n" +
+		"        --baseurl    Use a baseurl(path) to serve (eg. /google)\n" +
+		"    -h, --help       Show help\n" +
+		"    -v, --version    Show version"
+	);
+}
+
+function version() {
+	console.log("Curly Turtle v0.0.1");
+}
+
+function invalidArgument(arg) {
+	console.log("Invalid argument: " + arg + "\n");
+	help();
+	process.exit(2);
+}
+
+require("../lib/curly-turtle.js").startServe(config);
