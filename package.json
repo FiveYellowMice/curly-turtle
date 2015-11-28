@@ -1,0 +1,11 @@
+{
+	"name": "curly-turtle",
+	"version": "0.0.1",
+	"repository": "https://github.com/FiveYellowMice/curly-turtle",
+	"license": "GPL v3",
+	"dependencies": {},
+	"main": "./lib/curly-turtle.js",
+	"bin": {
+		"curly-tuttle": "./bin/curly-turtle"
+	}
+}
