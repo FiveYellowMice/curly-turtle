@@ -8,8 +8,8 @@
 	</head>
 
 	<body>
-		<form>
-			<input type="text" value="{{ search.keywords }}">
+		<form action="{{ program.baseurl }}/search">
+			<input type="text" name="q" value="{{ search.keywords }}" required autocomplete="off" autofocus>
 			<input type="submit" value="Search">
 		</form>
 
