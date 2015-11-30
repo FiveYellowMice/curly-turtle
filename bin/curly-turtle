@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-var config = {
-	version: "0.0.1",
-	port: 8081,
-	baseurl: ""
-};
+var curlyTurtle = require("../lib/curly-turtle.js");
+
+var config = curlyTurtle.programInfo;
 
 process.argv.slice(2).forEach(function (val, index, array) {
 	switch (val) {
@@ -56,4 +54,4 @@ function invalidArgument(arg) {
 	process.exit(2);
 }
 
-require("../lib/curly-turtle.js").startServe(config);
+curlyTurtle.startServe(config);
