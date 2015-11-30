@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1">
+
+		<title>{{ search.keywords }} - Curly Turtle</title>
+	</head>
+
+	<body>
+		<form>
+			<input type="text" value="{{ search.keywords }}">
+			<input type="submit" value="Search">
+		</form>
+
+		<p class="status">{{ search.status }}</p>
+
+		{% if search.results %}
+		<ul id="result-list">
+			{% for result in search.results %}
+			<li class="result">
+				<h3 class="result-title"><a href="{{ result.link }}">{{ result.title }}</a></h3>
+				<p class="result-link"><a href="{{ result.link }}">{{ result.link }}</a></p>
+				<p class="result-description">{{ result.description }}</p>
+			</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+
+		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a href="https://www.google.com">Google</a>.</div>
+	</body>
+</html>
