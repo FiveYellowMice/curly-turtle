@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1">
+
+		<title>Curly Turtle v{{ program.version }}</title>
+	</head>
+
+	<body>
+		<h1 class="curly-turtle">Curly Turtle</h1>
+		<p class="version">v{{ program.version }}</p>
+
+		<form action="{{ program.baseurl }}/search">
+			<input type="text" name="q" required autocomplete="off" autofocus>
+			<input type="submit" value="Search">
+		</form>
+
+		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}.</div>
+	</body>
+</html>
