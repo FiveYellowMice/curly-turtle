@@ -5,11 +5,16 @@
 		<meta name="viewport" content="width=device-width initial-scale=1">
 
 		<title>Curly Turtle v{{ program.version }}</title>
+
+		<link rel="shortcut icon" href="{{ program.baseurl }}/favicon.ico">
+		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
+		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 	</head>
 
 	<body>
 		<h1 class="curly-turtle">Curly Turtle</h1>
 		<p class="version">v{{ program.version }}</p>
+		<img src="{{ program.baseurl }}/favicon-192.png" alt="Curly Turtle">
 
 		<form action="{{ program.baseurl }}/search">
 			<input type="text" name="q" required autocomplete="off" autofocus>
