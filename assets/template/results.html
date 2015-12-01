@@ -17,7 +17,7 @@
 			<input type="submit" value="Search">
 		</form>
 
-		<p class="status">{{ search.status }}</p>
+		<p class="status">{% if search.status == "success" %}Found about {{ search.resultstats }} results.{% else %}{{ search.status }}{% endif %}</p>
 
 		{% if search.results %}
 		<ul id="result-list">
