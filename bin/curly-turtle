@@ -24,7 +24,12 @@ process.argv.slice(2).forEach(function (val, index, array) {
 			version();
 			process.exit();
 		case "--baseurl":
-			config.baseurl = array[index + 1];
+			var arg = array[index + 1];
+			if ( /^[0-9a-zA-Z_/-]*$/.test(arg) ) {
+				config.baseurl = arg.replace(/\/+/g, "/").replace(/^(?!\/)/, "/").replace(/\/$/, "");
+			} else {
+				invalidArgument(val + " " + arg);
+			}
 			break;
 		default:
 			if ( /^-/.test(array[index - 1]) === false ) {
