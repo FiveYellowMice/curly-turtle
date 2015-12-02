@@ -11,6 +11,10 @@
 		"jsdom": "^7.1.0",
 		"liquid-node": "^2.6.1"
 	},
+	"engines": {
+		"node": ">=5.0"
+	},
+	"preferGlobal": true,
 	"main": "./lib/curly-turtle.js",
 	"bin": "./bin/curly-turtle"
 }
