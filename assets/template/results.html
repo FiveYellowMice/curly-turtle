@@ -9,13 +9,17 @@
 		<link rel="shortcut icon" href="{{ program.baseurl }}/favicon.ico">
 		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
+		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
 	</head>
 
 	<body>
-		<form action="{{ program.baseurl }}/search">
-			<input type="text" name="q" value="{{ search.keywords }}" required autocomplete="off" autofocus>
-			<input type="submit" value="Search">
-		</form>
+		<div id="top-bar">
+			<a href="{{ program.baseurl }}/"><img class="small-logo" src="{{ program.baseurl }}/favicon-192.png" alt="Curly Turtle"></a>
+			<form id="search"  action="{{ program.baseurl }}/search">
+				<input type="text" name="q" value="{{ search.keywords }}" required autocomplete="off" autofocus>
+				<input type="submit" value="Search">
+			</form>
+		</div>
 
 		<p class="status">{% if search.status == "success" %}Found about {{ search.resultstats }} results.{% else %}{{ search.status }}{% endif %}</p>
 
@@ -24,8 +28,8 @@
 			{% for result in search.results %}
 			<li class="result">
 				<h3 class="result-title"><a href="{{ result.link }}">{{ result.title }}</a></h3>
-				<p class="result-link"><a href="{{ result.link }}">{{ result.link }}</a></p>
-				<p class="result-description">{{ result.description }}</p>
+				<p class="result-link">{{ result.link }}</p>
+				<p class="result-description">{{ result.description | replace: "<br>", "" }}</p>
 			</li>
 			{% endfor %}
 		</ul>

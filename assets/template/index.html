@@ -9,18 +9,21 @@
 		<link rel="shortcut icon" href="{{ program.baseurl }}/favicon.ico">
 		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
+		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
 	</head>
 
 	<body>
-		<h1 class="curly-turtle">Curly Turtle</h1>
-		<p class="version">v{{ program.version }}</p>
-		<img src="{{ program.baseurl }}/favicon-192.png" alt="Curly Turtle">
+		<h1 class="curly-turtle center">Curly Turtle</h1>
+		<p class="version center">v{{ program.version }}</p>
+		<img class="logo center" src="{{ program.baseurl }}/favicon-192.png" alt="Curly Turtle">
 
-		<form action="{{ program.baseurl }}/search">
-			<input type="text" name="q" required autocomplete="off" autofocus>
-			<input type="submit" value="Search">
-		</form>
+		<div class="search-area center">
+			<form id="search" action="{{ program.baseurl }}/search">
+				<input type="text" name="q" required autocomplete="off" autofocus>
+				<input type="submit" value="Search">
+			</form>
+		</div>
 
-		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}.</div>
+		<div class="powered-by center">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}.</div>
 	</body>
 </html>
