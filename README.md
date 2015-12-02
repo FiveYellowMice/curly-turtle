@@ -6,7 +6,7 @@ Web proxy for searching on Google privately.
 
 In some areas of the earth, we can't have free internet (when we speak of free, we are referring to freedom, not price). Therefore people will need to find ways to access a relatively free internet. First we have HTTP proxy and VPN, but they are vulnerable and easy to censor. Then there is a great software called [Shadowsocks](https://github.com/Long-live-shadowsocks/shadowsocks), it's fast, secure and easy-to-setup. However, users have to install clients in order to use it, which is a bit hard on some platforms, or when you are travelling.
 
-But web proxies don't have that restriction. Once you set it up on your server, you can access them with only a web browser, through HTTP or (better) HTTTPS. When you request a web page, the server grab the things from internet it can access, and send back to you. Curly Turtle is a web proxy concentrated on searching on Google.
+But web proxies don't have that restriction. Once you set it up on your server, you can access them with only a web browser, through HTTP or (better) HTTPS. When you request a web page, the server grab the things from internet it can access, and send back to you. Curly Turtle is a web proxy concentrated on searching on Google.
 
 I'm not saying web proxies can replace tunnel proxies like Shadowsocks, I just say it's more convenient to do one thing. In Curly Turtle's case, it's searching on Google, but only Google, no more.
 
@@ -36,7 +36,7 @@ You can specify a path, which if you know that path, you can access Curly Turtle
 
 For example, if you run with command `curly-turtle --baseurl /google/IQXuB6IbPUg9ca4O`, you can only access Curly Turtle with address `http://you-server-ip:8081/google/IQXuB6IbPUg9ca4O/`.
 
-**Note: As currently Curly Turtle does not support HTTPS connections, such kind of disguise will not prevent sniffers get your path. Anyway, use a reverse proxy as said below.**
+**Note: As currently Curly Turtle does not support HTTPS connections, such kind of disguise will not prevent sniffers get your path. Anyway, use a reverse proxy as said above.**
 
 ## License
 
