@@ -18,6 +18,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+var fs = require("fs");
 var curlyTurtle = require("../lib/curly-turtle.js");
 
 var config = curlyTurtle.programInfo;
@@ -41,6 +42,12 @@ process.argv.slice(2).forEach(function (val, index, array) {
 			} else {
 				invalidArgument(val + " " + arg);
 			}
+			break;
+		case "--sslkey":
+			config.sslkey = fs.readFileSync(array[index + 1]);
+			break;
+		case "--sslcert":
+			config.sslcert = fs.readFileSync(array[index + 1]);
 			break;
 		case "-h":
 		case "--help":
@@ -73,6 +80,8 @@ function help() {
 		"                     (default: 0.0.0.0 even IPv6 is available)\n" +
 		"    -p, --port       Specify server port (default: 8081)\n" +
 		"        --baseurl    Use a baseurl(path) to serve (eg. /google)\n" +
+		"        --sslkey     Path of SSL key for HTTPS\n" +
+        "        --sslcert    Path of SSL certificate for HTTPS\n" +
 		"    -h, --help       Show help\n" +
 		"    -v, --version    Show version"
 	);
