@@ -38,7 +38,7 @@ If everything goes right, you will see a friendly web page.
 
 ## Disguising
 
-You can specify a path, which if you know that path, you can access Curly Turtle. But if not, a 404 response looks Nginx will be returned, therefore people without the path can not access Curly Turtle on your server.
+You can specify a path with `--baseurl` option, which if you know that path, you can access Curly Turtle. But if not, an Nginx-look 404 response will be returned, therefore people without the path can not access Curly Turtle on your server.
 
 For example, if you add `--baseurl /google/IQXuB6IbPUg9ca4O` to the command line, you can only access Curly Turtle with address `https://you-server-ip:8081/google/IQXuB6IbPUg9ca4O/`.
 
