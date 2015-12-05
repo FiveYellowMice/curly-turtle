@@ -2,6 +2,8 @@
 
 Web proxy for searching on Google privately.
 
+[中文说明](https://github.com/FiveYellowMice/curly-turtle/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E)
+ 
 ## The story
 
 In some areas of the earth, we can't have free internet (when we speak of free, we are referring to freedom, not price). Therefore people will need to find ways to access a relatively free internet. First we have HTTP proxy and VPN, but they are vulnerable and easy to censor. Then there is a great software called [Shadowsocks](https://github.com/Long-live-shadowsocks/shadowsocks), it's fast, secure and easy-to-setup. However, users have to install clients in order to use it, which is a bit hard on some platforms, or when you are travelling.
@@ -44,4 +46,15 @@ For example, if you add `--baseurl /google/IQXuB6IbPUg9ca4O` to the command line
 
 ## License
 
-[GNU General Public License 3.0](LICENSE)
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
