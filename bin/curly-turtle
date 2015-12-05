@@ -27,27 +27,21 @@ process.argv.slice(2).forEach(function (val, index, array) {
 	switch (val) {
 		case "-p":
 		case "--port":
-			var arg = Number(array[index + 1]);
-			if ( isNaN(arg) === false ) {
-				config.port = arg;
-			} else {
-				invalidArgument(val + " " + array[index + 1]);
-			}
+			setPort(array[index + 1]);
 			break;
 		case "-a":
 		case "--address":
-			var arg = array[index + 1];
-			if ( /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(arg) || /^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])$/.test(arg) ) {
-				config.address = arg;
-			} else {
-				invalidArgument(val + " " + arg);
-			}
+			setAddress(array[index + 1]);
 			break;
 		case "--sslkey":
-			config.sslkey = fs.readFileSync(array[index + 1]);
+			setSslkey(array[index + 1]);
 			break;
 		case "--sslcert":
-			config.sslcert = fs.readFileSync(array[index + 1]);
+			setSslcert(array[index + 1]);
+			break;
+		case "-c":
+		case "--config":
+			readConfig(array[index + 1]);
 			break;
 		case "-h":
 		case "--help":
@@ -58,12 +52,7 @@ process.argv.slice(2).forEach(function (val, index, array) {
 			version();
 			process.exit();
 		case "--baseurl":
-			var arg = array[index + 1];
-			if ( /^[0-9a-zA-Z_/-]*$/.test(arg) ) {
-				config.baseurl = arg.replace(/\/+/g, "/").replace(/^(?!\/)/, "/").replace(/\/$/, "");
-			} else {
-				invalidArgument(val + " " + arg);
-			}
+			setBaseurl(array[index + 1]);
 			break;
 		default:
 			if ( /^-/.test(array[index - 1]) === false ) {
@@ -71,6 +60,60 @@ process.argv.slice(2).forEach(function (val, index, array) {
 			}
 	}
 });
+
+function setAddress(arg) {
+	if ( /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(arg) || /^([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])$/.test(arg) ) {
+		config.address = arg;
+	} else {
+		invalidArgument("Address should be a valid IPv4 or IPv6 address.");
+	}
+}
+
+function setPort(arg) {
+	var port = Number(arg);
+	if ( isNaN(port) === false ) {
+		config.port = port;
+	} else {
+		invalidArgument("Port should be a number.");
+	}
+}
+
+function setSslkey(arg) {
+	try {
+		config.sslkey = fs.readFileSync(arg);
+	} catch (error) {
+		invalidArgument(error);
+	}
+}
+
+function setSslcert(arg) {
+	try {
+		config.sslcert = fs.readFileSync(arg);
+	} catch (error) {
+		invalidArgument(error);
+	}
+}
+
+function setBaseurl(arg) {
+	if ( /^[0-9a-zA-Z_/-]*$/.test(arg) ) {
+		config.baseurl = arg.replace(/\/+/g, "/").replace(/^(?!\/)/, "/").replace(/\/$/, "");
+	} else {
+		invalidArgument("Baseurl should only contain lower case or upper case Latin letters and numbers.");
+	}
+}
+
+function readConfig(arg) {
+	try {
+		var configFile = JSON.parse(fs.readFileSync(arg));
+		if (configFile.address) setAddress(configFile.address);
+		if (configFile.port) setPort(configFile.port);
+		if (configFile.baseurl) setBaseurl(configFile.baseurl);
+		if (configFile.sslkey) setSslkey(configFile.sslkey);
+		if (configFile.sslcert) setSslcert(configFile.sslcert);
+	} catch (error) {
+		invalidArgument(error);
+	}
+}
 
 function help() {
 	version();
@@ -82,6 +125,7 @@ function help() {
 		"        --baseurl    Use a baseurl(path) to serve (eg. /google)\n" +
 		"        --sslkey     Path of SSL key for HTTPS\n" +
         "        --sslcert    Path of SSL certificate for HTTPS\n" +
+		"    -c, --config     Path of configuration file\n" +
 		"    -h, --help       Show help\n" +
 		"    -v, --version    Show version"
 	);
