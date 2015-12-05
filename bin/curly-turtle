@@ -124,7 +124,7 @@ function help() {
 		"    -p, --port       Specify server port (default: 8081)\n" +
 		"        --baseurl    Use a baseurl(path) to serve (eg. /google)\n" +
 		"        --sslkey     Path of SSL key for HTTPS\n" +
-        "        --sslcert    Path of SSL certificate for HTTPS\n" +
+		"        --sslcert    Path of SSL certificate for HTTPS\n" +
 		"    -c, --config     Path of configuration file\n" +
 		"    -h, --help       Show help\n" +
 		"    -v, --version    Show version"
