@@ -70,8 +70,12 @@ a:hover {
 }
 
 .result-link {
+	word-break: break-all;
 	margin: 0;
 	color: #006502;
+}
+.result-images img {
+	margin-right: 5px;
 }
 
 .result-description {

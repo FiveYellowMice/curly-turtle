@@ -29,7 +29,8 @@
 			<li class="result">
 				<h3 class="result-title"><a href="{{ result.link }}">{{ result.title }}</a></h3>
 				<p class="result-link">{{ result.link }}</p>
-				<p class="result-description">{{ result.description | replace: "<br>", "" }}</p>
+				{% if result.images %}<div class="result-images">{% for image in result.images %}<a href="{{ image.link }}"><img src="{{ image.src }}" alt="{{ image.alt }}"></a>{% endfor %}</div>{% endif %}
+				{% if result.description %}<p class="result-description">{{ result.description | replace: "<br>", "" }}</p>{% endif %}
 			</li>
 			{% endfor %}
 		</ul>
