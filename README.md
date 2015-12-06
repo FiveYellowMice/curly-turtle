@@ -1,5 +1,6 @@
 # Curly Turtle
 
+[![Build Status](https://travis-ci.org/FiveYellowMice/curly-turtle.svg)](https://travis-ci.org/FiveYellowMice/curly-turtle)
 [![npm version](https://img.shields.io/npm/v/curly-turtle.svg)](https://www.npmjs.com/package/curly-turtle)
 
 Web proxy for searching on Google privately.
