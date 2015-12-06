@@ -47,6 +47,22 @@ You can specify a path with `--baseurl` option, which if you know that path, you
 
 For example, if you add `--baseurl /google/IQXuB6IbPUg9ca4O` to the command line, you can only access Curly Turtle with address `https://you-server-ip:8081/google/IQXuB6IbPUg9ca4O/`.
 
+## Configuration
+
+You can also use a configuration file to set `address`, `port`, `baseurl`, `sslkey` and `sslcert`. Pass `-c` or `--config` option with the path of the configuration file to use it.
+
+The configuration file must be in [YaML](http://yaml.org/) format. For example, create a coniguration file in `/etc/curly-turtle/master.yml` with the following content:
+
+	address: 127.0.0.1
+	port: 8080
+	baseurl: /eqBT7AGJLpIu17s0
+	sslkey: /etc/ssl/domain.key
+	sslcert: /etc/ssl/domain.crt
+
+Then run the command `curly-turtle -c /etc/curly-turtle/master.yml`, it will listen on address 127.0.0.1, port 8080, use `/eqBT7AGJLpIu17s0` as baseurl, load SSL private key in `/etc/ssl/domain.key` and load SSL certificate in `/etc/ssl/domain.crt`.
+
+If one option is omitted, the default value will be used.
+
 ## License
 
 	This program is free software: you can redistribute it and/or modify
