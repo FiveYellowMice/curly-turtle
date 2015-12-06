@@ -10,6 +10,8 @@
 		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
+		
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	</head>
 
 	<body>
@@ -18,6 +20,39 @@
 			<form id="search"  action="{{ program.baseurl }}/search">
 				<input type="text" name="q" value="{{ search.keywords }}" required autocomplete="off" autofocus>
 				<input type="submit" value="Search">
+				<a id="show-advanced-options" href="javascript: showAdvanced()">Show advanced options</a>
+				<table id="advanced-options">
+					<thead>
+						<th colspan="2">Advanced options</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Language: </td>
+							<td>
+								<select name="hl">
+									<option value="en">English</option>
+									<option value="fr">French</option>
+									<option value="de">German</option>
+									<option value="es">Spanish</option>
+									<option value="js">Japanese</option>
+									<option value="ko">Korean</option>
+									<option value="ru">Russian</option>
+									<option value="zh-TW">Chinese (Traditional)</option>
+									<option value="zh-CN">Chinese (Simplified)</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Safe search: </td>
+							<td>
+								<select name="safe">
+									<option value="on">On</option>
+									<option value="off">Off</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</form>
 		</div>
 
@@ -37,5 +72,36 @@
 		{% endif %}
 
 		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a href="https://www.google.com">Google</a>.</div>
+		
+		<script>
+			$(document).ready(function () {
+				$("#advanced-options").hide();
+				$("#show-advanced-options").show();
+
+				$("#advanced-options [name=hl] [value=" + getUrlVars().hl + "]").attr("selected", "selected");
+				$("#advanced-options [name=safe] [value=" + getUrlVars().safe + "]").attr("selected", "selected");
+
+				if (localStorage) {
+					localStorage.setItem("hl", getUrlVars().hl);
+					localStorage.setItem("safe", getUrlVars().safe);
+				}
+			});
+
+			function showAdvanced(){
+				$("#show-advanced-options").hide();
+				$("#advanced-options").fadeIn(500);
+			}
+
+			function getUrlVars() {
+				var vars = [], hash;
+				var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+				for(var i = 0; i < hashes.length; i++) {
+					hash = hashes[i].split('=');
+					vars.push(hash[0]);
+					vars[hash[0]] = hash[1];
+				}
+				return vars;
+			}
+		</script>
 	</body>
 </html>
