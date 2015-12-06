@@ -51,7 +51,7 @@ For example, if you add `--baseurl /google/IQXuB6IbPUg9ca4O` to the command line
 
 You can also use a configuration file to set `address`, `port`, `baseurl`, `sslkey` and `sslcert`. Pass `-c` or `--config` option with the path of the configuration file to use it.
 
-The configuration file must be in [YaML](http://yaml.org/) format. For example, create a coniguration file in `/etc/curly-turtle/master.yml` with the following content:
+The configuration file must be in [YAML](http://yaml.org/) format. For example, create a cofiguration file in `/etc/curly-turtle/master.yml` with the following content:
 
 	address: 127.0.0.1
 	port: 8080
