@@ -19,6 +19,7 @@
  */
 
 var fs = require("fs");
+var yaml = require("js-yaml");
 var curlyTurtle = require("../lib/curly-turtle.js");
 
 var config = curlyTurtle.programInfo;
@@ -104,7 +105,7 @@ function setBaseurl(arg) {
 
 function readConfig(arg) {
 	try {
-		var configFile = JSON.parse(fs.readFileSync(arg));
+		var configFile = yaml.safeLoad(fs.readFileSync(arg));
 		if (configFile.address) setAddress(configFile.address);
 		if (configFile.port) setPort(configFile.port);
 		if (configFile.baseurl) setBaseurl(configFile.baseurl);
