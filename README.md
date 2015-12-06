@@ -1,5 +1,7 @@
 # Curly Turtle
 
+[![npm version](https://img.shields.io/npm/v/curly-turtle.svg)](https://www.npmjs.com/package/curly-turtle)
+
 Web proxy for searching on Google privately.
 
 [中文说明](https://github.com/FiveYellowMice/curly-turtle/wiki/%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E)
