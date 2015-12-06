@@ -85,6 +85,28 @@
 					localStorage.setItem("hl", getUrlVars().hl);
 					localStorage.setItem("safe", getUrlVars().safe);
 				}
+
+				var pageNumber = 0;
+				if ( getUrlVars().start ) pageNumber = Math.floor( getUrlVars().start / 10 );
+				if ( Number("{{ search.resultstats }}".match(/\d+/g).join("")) > 10 ) {
+					$(".status").append(" Showing page " + (pageNumber + 1) + ".");
+					$("#result-list").after("<div id=\"paginator\"></div>");
+
+					if ( pageNumber > 0 ) {
+						$("#paginator").append("<a href=\"" + location.pathname + location.search.replace(/(\?|&)start=[^& #]*/, "$1start=" + (pageNumber * 10 - 10)) + "\">&lt; Previous page</a>");
+					}
+					$("#paginator").append(" | Go to page: <input id=\"page-number-input\" size=\"2\" type=\"text\" autocomplete=\"off\">");
+
+					var nextPageSearchString;
+					if ( getUrlVars().start ) {
+						nextPageSearchString = location.search.replace(/(\?|&)start=[^& #]*/, "$1start=" + (pageNumber * 10 + 10));
+					} else {
+						nextPageSearchString = location.search + "&start=10";
+					}
+					$("#paginator").append(" | <a href=\"" + location.pathname + nextPageSearchString + "\">Next page &gt;</a>");
+
+					$("#page-number-input").on("keydown", pageNumberInputChanged);
+				}
 			});
 
 			function showAdvanced(){
@@ -101,6 +123,19 @@
 					vars[hash[0]] = hash[1];
 				}
 				return vars;
+			}
+
+			function pageNumberInputChanged(event) {
+				$("#page-number-input").val($("#page-number-input").val().replace(/\D/, ""));
+
+				if ( event.keyCode === 13 && $("#page-number-input").val().length > 0 ) {
+					var targetPage = Number($("#page-number-input").val()) - 1;
+					if ( getUrlVars().start ) {
+						location = location.pathname + location.search.replace(/(\?|&)start=[^& #]*/, "$1start=" + (targetPage * 10));
+					} else {
+						location = location.pathname + location.search + "&start=" + (targetPage * 10);
+					}
+				}
 			}
 		</script>
 	</body>
