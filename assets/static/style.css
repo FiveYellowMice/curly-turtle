@@ -21,6 +21,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+img {
+	border: none;
+}
+
 .center {
 	display: block;
 	margin: auto;
@@ -97,6 +101,7 @@ a:hover {
 #result-list {
 	margin: 5px;
 	padding-left: 20px;
+	padding-right: 20px;
 	list-style-type: none;
 }
 
