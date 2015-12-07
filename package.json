@@ -1,7 +1,7 @@
 {
 	"name": "curly-turtle",
 	"version": "0.2.1",
-	"description": "Some sort of web proxy for searching on Google.",
+	"description": "Web proxy for searching on Google privately.",
 	"repository": { 
 		"type": "git",
 		"url": "https://github.com/FiveYellowMice/curly-turtle.git"
