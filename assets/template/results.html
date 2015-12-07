@@ -10,6 +10,8 @@
 		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
+
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	</head>
 
 	<body>
@@ -21,7 +23,7 @@
 			</form>
 		</div>
 
-		<p class="status">{% if search.status == "success" %}Found about {{ search.resultstats }} results.{% else %}{{ search.status }}{% endif %}</p>
+		<p class="status">{% if search.status == "success" %}Found about {{ search.resultstats }} results.{% if search.pagenumber != 1 %} Showing page {{ search.pagenumber }}.{% endif %}{% else %}{{ search.status }}{% endif %}</p>
 
 		{% if search.results %}
 		<ul id="result-list">
@@ -37,5 +39,17 @@
 		{% endif %}
 
 		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a href="https://www.google.com">Google</a>.</div>
+
+		<script>
+			if ( {{ search.resultstats }} > 10 ) {
+				var linkWoStart = location.pathname + location.search.replace(/(?:&start=[^&# ]*|start=[^&# ]*&)/, "");
+				var pageNumber = {{ search.pagenumber }};
+				$("#result-list").after("<div id=\"paginator\"></div>");
+				if ( pageNumber !== 1 ) {
+					$("#paginator").append("<a href=\"" + linkWoStart + "&start=" + (pageNumber * 10 - 20)  + "\">&lt; Previous</a>");
+				}
+				$("#paginator").append(" | <a href=\"" + linkWoStart + "&start=" + (pageNumber * 10) + "\">Next &gt;</a>");
+			}
+		</script>
 	</body>
 </html>

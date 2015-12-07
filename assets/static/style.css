@@ -99,3 +99,7 @@ a:hover {
 	padding-left: 20px;
 	list-style-type: none;
 }
+
+#paginator {
+	margin: 10px;
+}
