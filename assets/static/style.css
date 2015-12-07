@@ -87,26 +87,6 @@ a:hover {
 	margin: 10px;
 }
 
-#show-advanced-options {
-	display: none;
-}
-
-#advanced-options {
-	margin: auto;
-	margin-top: 10px;
-	border: 1px solid #999999;
-	max-width: 300px;
-	background-color: #FFFFFF;
-}
-
-#advanced-options td {
-	text-align: right;
-}
-
-#advanced-options select {
-	width: 100%
-}
-
 #top-bar {
 	padding-left: 10px;
 	background-color: #00BC80;
@@ -118,8 +98,4 @@ a:hover {
 	margin: 5px;
 	padding-left: 20px;
 	list-style-type: none;
-}
-
-#paginator {
-	margin: 10px;
 }

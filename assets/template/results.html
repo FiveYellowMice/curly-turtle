@@ -10,8 +10,6 @@
 		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
-		
-		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	</head>
 
 	<body>
@@ -20,39 +18,6 @@
 			<form id="search"  action="{{ program.baseurl }}/search">
 				<input type="text" name="q" value="{{ search.keywords }}" required autocomplete="off" autofocus>
 				<input type="submit" value="Search">
-				<a id="show-advanced-options" href="javascript: showAdvanced()">Show advanced options</a>
-				<table id="advanced-options">
-					<thead>
-						<th colspan="2">Advanced options</th>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Language: </td>
-							<td>
-								<select name="hl">
-									<option value="en">English</option>
-									<option value="fr">French</option>
-									<option value="de">German</option>
-									<option value="es">Spanish</option>
-									<option value="js">Japanese</option>
-									<option value="ko">Korean</option>
-									<option value="ru">Russian</option>
-									<option value="zh-TW">Chinese (Traditional)</option>
-									<option value="zh-CN">Chinese (Simplified)</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td>Safe search: </td>
-							<td>
-								<select name="safe">
-									<option value="on">On</option>
-									<option value="off">Off</option>
-								</select>
-							</td>
-						</tr>
-					</tbody>
-				</table>
 			</form>
 		</div>
 
@@ -72,71 +37,5 @@
 		{% endif %}
 
 		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a href="https://www.google.com">Google</a>.</div>
-		
-		<script>
-			$(document).ready(function () {
-				$("#advanced-options").hide();
-				$("#show-advanced-options").show();
-
-				$("#advanced-options [name=hl] [value=" + getUrlVars().hl + "]").attr("selected", "selected");
-				$("#advanced-options [name=safe] [value=" + getUrlVars().safe + "]").attr("selected", "selected");
-
-				if (localStorage) {
-					localStorage.setItem("hl", getUrlVars().hl);
-					localStorage.setItem("safe", getUrlVars().safe);
-				}
-
-				var pageNumber = 0;
-				if ( getUrlVars().start ) pageNumber = Math.floor( getUrlVars().start / 10 );
-				if ( Number("{{ search.resultstats }}".match(/\d+/g).join("")) > 10 ) {
-					$(".status").append(" Showing page " + (pageNumber + 1) + ".");
-					$("#result-list").after("<div id=\"paginator\"></div>");
-
-					if ( pageNumber > 0 ) {
-						$("#paginator").append("<a href=\"" + location.pathname + location.search.replace(/(\?|&)start=[^& #]*/, "$1start=" + (pageNumber * 10 - 10)) + "\">&lt; Previous page</a>");
-					}
-					$("#paginator").append(" | Go to page: <input id=\"page-number-input\" size=\"2\" type=\"text\" autocomplete=\"off\">");
-
-					var nextPageSearchString;
-					if ( getUrlVars().start ) {
-						nextPageSearchString = location.search.replace(/(\?|&)start=[^& #]*/, "$1start=" + (pageNumber * 10 + 10));
-					} else {
-						nextPageSearchString = location.search + "&start=10";
-					}
-					$("#paginator").append(" | <a href=\"" + location.pathname + nextPageSearchString + "\">Next page &gt;</a>");
-
-					$("#page-number-input").on("keydown", pageNumberInputChanged);
-				}
-			});
-
-			function showAdvanced(){
-				$("#show-advanced-options").hide();
-				$("#advanced-options").fadeIn(500);
-			}
-
-			function getUrlVars() {
-				var vars = [], hash;
-				var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-				for(var i = 0; i < hashes.length; i++) {
-					hash = hashes[i].split('=');
-					vars.push(hash[0]);
-					vars[hash[0]] = hash[1];
-				}
-				return vars;
-			}
-
-			function pageNumberInputChanged(event) {
-				$("#page-number-input").val($("#page-number-input").val().replace(/\D/, ""));
-
-				if ( event.keyCode === 13 && $("#page-number-input").val().length > 0 ) {
-					var targetPage = Number($("#page-number-input").val()) - 1;
-					if ( getUrlVars().start ) {
-						location = location.pathname + location.search.replace(/(\?|&)start=[^& #]*/, "$1start=" + (targetPage * 10));
-					} else {
-						location = location.pathname + location.search + "&start=" + (targetPage * 10);
-					}
-				}
-			}
-		</script>
 	</body>
 </html>
