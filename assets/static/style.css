@@ -43,6 +43,9 @@ img {
 
 .logo {
 	margin: 10px auto;
+
+	width: 192px;
+	height: 192px;
 }
 
 .small-logo {
