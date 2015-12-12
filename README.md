@@ -37,7 +37,7 @@ Once you have got your key and certificate, use the `--sslkey` option to specify
 
 You can then access it with your web browser, type `https://your-server-ip:8081` in the address bar, for example, `https://123.234.345.456:8081` if your server IP is 123.234.345.456.
 
-If you use a self-signed certificate and your browser warns you that the site is insecure, don't worry, that's because your certificate is self-signed and not trusted by the browser. Just click whatever your browser gives you to proceed anyway (for Firefox is add exception). To skip that problem, [add your certificate to your browser's trust store](https://www.google.com/searchq=add+self-signed+certificate+to+trust+store).
+If you use a self-signed certificate and your browser warns you that the site is insecure, don't worry, that's because your certificate is self-signed and not trusted by the browser. Just click whatever your browser gives you to proceed anyway (for Firefox is add exception). To skip that problem, [add your certificate to your browser's trust store](https://www.google.com/search?q=add+self-signed+certificate+to+trust+store).
 
 If everything goes right, you will see a friendly web page.
 
@@ -65,15 +65,10 @@ If one option is omitted, the default value will be used.
 
 ## License
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+Copyright (C) 2015 FiveYellowMice
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+Curly Turtle is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+Curly Turtle is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
