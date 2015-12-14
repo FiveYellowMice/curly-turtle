@@ -10,7 +10,8 @@
 	"dependencies": {
 		"jsdom": "^7.1.0",
 		"liquid-node": "^2.6.1",
-		"js-yaml": "^3.4.6"
+		"js-yaml": "^3.4.6",
+		"mime-types": "^2.1.8"
 	},
 	"engines": {
 		"node": ">=5.0"
