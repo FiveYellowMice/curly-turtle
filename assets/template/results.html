@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width initial-scale=1">
+		<meta name="referrer" content="never">
 
 		<title>{{ search.keywords }} - Curly Turtle</title>
 
@@ -30,16 +31,16 @@
 		<ul id="result-list">
 			{% for result in search.results %}
 			<li class="result">
-				<h3 class="result-title"><a href="{{ result.link }}">{{ result.title }}</a></h3>
+				<h3 class="result-title"><a rel="noreferrer" href="{{ result.link }}">{{ result.title }}</a></h3>
 				<p class="result-link">{{ result.link }}</p>
-				{% if result.images %}<div class="result-images">{% for image in result.images %}<a href="{{ image.link }}"><img src="{{ program.baseurl }}{{ image.src }}" alt="{{ image.alt }}"></a>{% endfor %}</div>{% endif %}
+				{% if result.images %}<div class="result-images">{% for image in result.images %}<a rel="noreferrer" href="{{ image.link }}"><img src="{{ program.baseurl }}{{ image.src }}" alt="{{ image.alt }}"></a>{% endfor %}</div>{% endif %}
 				{% if result.description %}<p class="result-description">{{ result.description | replace: "<br>", "" }}</p>{% endif %}
 			</li>
 			{% endfor %}
 		</ul>
 		{% endif %}
 
-		<div class="powered-by">Powered by <a href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a href="https://www.google.com">Google</a>.</div>
+		<div class="powered-by">Powered by <a rel="noreferrer" href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a rel="noreferrer" href="https://www.google.com">Google</a>.</div>
 
 		<script>
 			if ( {{ search.resultstats }} > 10 ) {
