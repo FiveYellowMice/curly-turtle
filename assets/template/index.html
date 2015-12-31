@@ -13,13 +13,12 @@
 		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
 
 		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="{{ program.baseurl }}/old-browsers.js"></script>
 	</head>
 
 	<body>
 		<h1 class="curly-turtle center">Curly Turtle</h1>
 		<p class="version center">v{{ program.version }}</p>
-		<img class="logo center" src="{{ program.baseurl }}/logo.svg" alt="Curly Turtle">
+		<img class="logo center" src="{{ program.baseurl }}/logo.svg" alt="Curly Turtle" onerror="this.onerror=null; this.src='{{ program.baseurl }}/favicon-192.png'">
 
 		<div class="search-area center">
 			<form id="search" action="{{ program.baseurl }}/search">
