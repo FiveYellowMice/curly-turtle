@@ -29,7 +29,8 @@
 		{% if search.results %}
 		<ul id="result-list">
 			{% for result in search.results %}
-			<li class="result">
+			<li class="result{% if result.answer %} answer-box{% endif %}">
+				{% if result.answer %}<p class="result-answer">{{ result.answer }}</p>{% endif %}
 				<h3 class="result-title"><a rel="noreferrer" href="{{ result.link }}">{{ result.title }}</a></h3>
 				<p class="result-link">{{ result.link }}</p>
 				{% if result.images %}<div class="result-images">{% for image in result.images %}<a rel="noreferrer" href="{{ image.link }}"><img src="{{ program.baseurl }}{{ image.src }}" alt="{{ image.alt }}"></a>{% endfor %}</div>{% endif %}

@@ -72,6 +72,10 @@ img {
 	max-width: 640px;
 }
 
+.result-answer {
+	margin: 0;
+}
+
 .result-title {
 	margin: 0;
 }
@@ -87,6 +91,11 @@ img {
 
 .result-description {
 	margin: 0;
+}
+
+.answer-box {
+	border: 1px solid gray;
+	padding: 5px;
 }
 
 #search {
