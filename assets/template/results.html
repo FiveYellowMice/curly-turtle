@@ -40,18 +40,16 @@
 		</ul>
 		{% endif %}
 
-		<div class="powered-by">Powered by <a rel="noreferrer" href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a rel="noreferrer" href="https://www.google.com">Google</a>.</div>
+		{% if search.resultstats > 10 %}
+		<div id="paginator">
+			{% if search.pagenumber != 1 %}
+			<a href="{{ program.baseurl }}/search?q={{ search.keywords | replace: ' ', '+' }}&start={{ search.pagenumber | times: 10 | minus: 20 }}">&lt; Previous</a>
+			{% endif %}
+			|
+			<a href="{{ program.baseurl }}/search?q={{ search.keywords | replace: ' ', '+' }}&start={{ search.pagenumber | times: 10 }}">Next &gt;</a>
+		</div>
+		{% endif %}
 
-		<script>
-			if ( {{ search.resultstats }} > 10 ) {
-				var linkWoStart = location.pathname + location.search.replace(/(?:&start=[^&# ]*|start=[^&# ]*&)/, "");
-				var pageNumber = {{ search.pagenumber }};
-				$("#result-list").after("<div id=\"paginator\"></div>");
-				if ( pageNumber !== 1 ) {
-					$("#paginator").append("<a href=\"" + linkWoStart + "&start=" + (pageNumber * 10 - 20)  + "\">&lt; Previous</a>");
-				}
-				$("#paginator").append(" | <a href=\"" + linkWoStart + "&start=" + (pageNumber * 10) + "\">Next &gt;</a>");
-			}
-		</script>
+		<div class="powered-by">Powered by <a rel="noreferrer" href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}. But all results are from <a rel="noreferrer" href="https://www.google.com">Google</a>.</div>
 	</body>
 </html>
