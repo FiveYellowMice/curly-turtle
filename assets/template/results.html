@@ -43,10 +43,10 @@
 		{% if search.resultstats > 10 %}
 		<div id="paginator">
 			{% if search.pagenumber != 1 %}
-			<a href="{{ program.baseurl }}/search?q={{ search.keywords | replace: ' ', '+' }}&start={{ search.pagenumber | times: 10 | minus: 20 }}">&lt; Previous</a>
+			<a href="{{ search.request.url | regrep: '(?:&start=[^&# ]*|start=[^&# ]*&)', '' }}&start={{ search.pagenumber | times: 10 | minus: 20 }}">&lt; Previous</a>
 			{% endif %}
 			|
-			<a href="{{ program.baseurl }}/search?q={{ search.keywords | replace: ' ', '+' }}&start={{ search.pagenumber | times: 10 }}">Next &gt;</a>
+			<a href="{{ search.request.url | regrep: '(?:&start=[^&# ]*|start=[^&# ]*&)', '' }}&start={{ search.pagenumber | times: 10 }}">Next &gt;</a>
 		</div>
 		{% endif %}
 
