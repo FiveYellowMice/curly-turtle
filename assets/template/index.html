@@ -24,6 +24,15 @@
 				<input type="submit" value="Search">
 			</form>
 		</div>
+		
+		<script>
+			if (location.protocal !== "https:") {
+				document.write("<p class=\"center warning\">WARNING: You are using an insecure protocal.</p>");
+			}
+			if (/MSIE/.test(navigator.userAgent)) {
+				document.write("<p class=\"center warning\">WARNING: You are using an outdated browser.</p>");
+			}
+		</script>
 
 		<div class="powered-by center">Powered by <a rel="noreferrer" href="https://github.com/FiveYellowMice/curly-turtle">Curly Turtle</a> v{{ program.version }}.</div>
 	</body>
