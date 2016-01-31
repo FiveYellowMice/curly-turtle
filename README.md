@@ -47,6 +47,12 @@ You can specify a path with `--baseurl` option, which if you know that path, you
 
 For example, if you add `--baseurl /google/IQXuB6IbPUg9ca4O` to the command line, you can only access Curly Turtle with address `https://you-server-ip:8081/google/IQXuB6IbPUg9ca4O/`.
 
+## Rate limiting
+
+Google does not allow automatic fetching of their search results, and they will block IPs that send too much requests in a certain amount of time. Therefore your server running Curly Turtle may be blocked by Google if you search on it too frequently (you will get 502 or 503 errors). To deal with it, you can set a time, in miliseconds, that is the minimum interval between two searches. If your two searches' interval is below that limit, you will get "Too many requests" error. And when the time has passed, you can search again.
+
+Use `--ratelimit` to set the limit, for example, `curly-turtle --ratelimit 20000` sets the rate limit to 20000 miliseconds (20 seconds).
+
 ## Configuration
 
 You can also use a configuration file to set `address`, `port`, `baseurl`, `sslkey` and `sslcert`. Pass `-c` or `--config` option with the path of the configuration file to use it.
@@ -58,8 +64,9 @@ The configuration file must be in [YAML](http://yaml.org/) format. For example, 
 	baseurl: /eqBT7AGJLpIu17s0
 	sslkey: /etc/ssl/domain.key
 	sslcert: /etc/ssl/domain.crt
+	ratelimit: 20000
 
-Then run the command `curly-turtle -c /etc/curly-turtle/master.yml`, it will listen on address 127.0.0.1, port 8080, use `/eqBT7AGJLpIu17s0` as baseurl, load SSL private key in `/etc/ssl/domain.key` and load SSL certificate in `/etc/ssl/domain.crt`.
+Then run the command `curly-turtle -c /etc/curly-turtle/master.yml`, it will listen on address 127.0.0.1, port 8080, use `/eqBT7AGJLpIu17s0` as baseurl, load SSL private key in `/etc/ssl/domain.key`, load SSL certificate in `/etc/ssl/domain.crt` and set rate limit to 20000 miliseconds.
 
 If one option is omitted, the default value will be used.
 
