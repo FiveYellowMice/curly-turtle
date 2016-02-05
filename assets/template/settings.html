@@ -19,7 +19,7 @@
 
 		<form class="settings-area">
 			Language: <input type="text" name="lang" autocomplete="off" value="{% if search.request.settings.lang %}{{ search.request.settings.lang }}{% else %}en{% endif %}"><br>
-			<span id="common-langs" style="display:none;">
+			<span class="hidden" id="common-langs">
 				<a href="javascript:setLang('en')">English</a>
 				<a href="javascript:setLang('fr')">Français</a>
 				<a href="javascript:setLang('de')">Deutsche</a>
@@ -29,7 +29,7 @@
 				<br>
 			</span>
 			<script>
-				document.getElementById("common-langs").style = "";
+				document.getElementById("common-langs").className = "";
 				function setLang(lang) {
 					document.getElementsByName("lang")[0].value = lang;
 				}

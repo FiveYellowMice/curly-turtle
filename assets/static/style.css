@@ -81,6 +81,8 @@ img {
 	line-height: 2;
 }
 
+.hidden { display: none; }
+
 .search-area {
 	margin: 20px;
 	padding: 0;
