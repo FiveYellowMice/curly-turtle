@@ -33,6 +33,7 @@ img {
 }
 
 .curly-turtle {
+	margin: 0 10px;
 	font-size: 4em;
 }
 
@@ -61,6 +62,23 @@ img {
 
 .powered-by {
 	margin: 10px;
+}
+
+.settings-button {
+	margin: 5px;
+	float: right;
+	clear: both;
+}
+
+.settings-title {
+	margin: 20px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid gray;
+}
+
+.settings-area {
+	margin: 20px;
+	line-height: 2;
 }
 
 .search-area {
