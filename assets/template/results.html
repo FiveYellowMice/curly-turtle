@@ -18,6 +18,7 @@
 			<a href="{{ program.baseurl }}/"><img class="small-logo" src="{{ program.baseurl }}/logo.svg" alt="Curly Turtle" onerror="this.onerror=null; this.src='{{ program.baseurl }}/favicon-192.png'"></a>
 			<form id="search"  action="{{ program.baseurl }}/search">
 				<input type="text" name="q" value="{{ search.keywords }}" required autocomplete="off" autofocus>
+				{% if search.request.settings.lang %}<input type="hidden" name="hl" value="{{ search.request.settings.lang }}">{% endif %}
 				<input type="submit" value="Search">
 			</form>
 		</div>

@@ -23,6 +23,7 @@
 		<div class="search-area center">
 			<form id="search" action="{{ program.baseurl }}/search">
 				<input type="text" name="q" required autocomplete="off" autofocus>
+				{% if search.request.settings.lang %}<input type="hidden" name="hl" value="{{ search.request.settings.lang }}">{% endif %}
 				<input type="submit" value="Search">
 			</form>
 		</div>
