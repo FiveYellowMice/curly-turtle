@@ -17,6 +17,9 @@
 	<body>
 		<h1 class="settings-title">Settings</h1>
 
+		{% if search.status == "settings saved" %}
+		<p class="saved-notice">Saved, redirecting to home page... If you are not redirecting, <a href="{{ program.baseurl }}/">click here</a>.</p>
+		{% else %}
 		<form class="settings-area">
 			Language: <input type="text" name="lang" autocomplete="off" value="{% if search.request.settings.lang %}{{ search.request.settings.lang }}{% else %}en{% endif %}"><br>
 			<span class="hidden" id="common-langs">
@@ -35,8 +38,9 @@
 				}
 			</script>
 			Open in new tab: <input type="radio" name="newtab" value="on"{% if search.request.settings.newtab == "on" %} checked{% endif %}>On <input type="radio" name="newtab" value="off"{% if search.request.settings.newtab != "on" %} checked{% endif %}>Off<br>
-			{% if search.status == "settings saved" %}Saved, redirecting to home page...{% else %}<input type="submit" value="Save"> <a href="{{ program.baseurl }}/">Cancel</a>{% endif %}<br>
+			<input type="submit" value="Save"> <a href="{{ program.baseurl }}/">Cancel</a><br>
 			By clicking save, you agree to use Cookies.
 		</form>
+		{% endif %}
 	</body>
 </html>

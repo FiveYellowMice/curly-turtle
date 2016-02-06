@@ -81,6 +81,10 @@ img {
 	line-height: 2;
 }
 
+.saved-notice {
+	margin: 20px;
+}
+
 .hidden { display: none; }
 
 .search-area {
