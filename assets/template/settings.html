@@ -38,6 +38,7 @@
 				}
 			</script>
 			Open in new tab: <input type="radio" name="newtab" value="on"{% if search.request.settings.newtab == "on" %} checked{% endif %}>On <input type="radio" name="newtab" value="off"{% if search.request.settings.newtab != "on" %} checked{% endif %}>Off<br>
+			External web proxy <a rel="noreferrer" href="https://github.com/FiveYellowMice/curly-turtle/wiki/External-web-proxy" target="_blank">(help)</a>: <input type="text" name="extproxy" autocomplete="off" value="{{ search.request.settings.extproxy }}"><br>
 			<input type="submit" value="Save"> <a href="{{ program.baseurl }}/">Cancel</a><br>
 			By clicking save, you agree to use Cookies.
 		</form>

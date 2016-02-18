@@ -111,6 +111,11 @@ img {
 	margin: 0;
 	color: #006502;
 }
+
+.result-options {
+	margin: 0;
+}
+
 .result-images img {
 	margin-right: 5px;
 }
