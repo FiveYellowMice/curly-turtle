@@ -44,6 +44,9 @@ process.argv.slice(2).forEach(function (val, index, array) {
 		case "--ratelimit":
 			setRatelimit(array[index + 1]);
 			break;
+		case "--extproxy":
+			setExtProxy(array[index + 1]);
+			break;
 		case "-c":
 		case "--config":
 			readConfig(array[index + 1]);
@@ -116,6 +119,10 @@ function setRatelimit(arg) {
 	}
 }
 
+function setExtProxy(arg) {
+	config.extproxy = arg;
+}
+
 function readConfig(arg) {
 	try {
 		var configFile = yaml.safeLoad(fs.readFileSync(arg));
@@ -125,6 +132,7 @@ function readConfig(arg) {
 		if (configFile.sslkey) setSslkey(configFile.sslkey);
 		if (configFile.sslcert) setSslcert(configFile.sslcert);
 		if (configFile.ratelimit) setRatelimit(configFile.ratelimit);
+		if (configFile.extproxy) setExtProxy(configFile.extproxy);
 	} catch (error) {
 		invalidArgument(error);
 	}
@@ -142,6 +150,8 @@ function help() {
 		"        --sslcert    Path of SSL certificate for HTTPS\n" +
 		"    -l, --ratelimit  Set the minimum time leap in miliseconds\n" +
 		"                     between two requests\n" +
+		"        --extproxy   Open search results in external proxy\n" +
+		"                     See https://bit.ly/1XB3vte for detials\n" +
 		"    -c, --config     Path of configuration file\n" +
 		"    -h, --help       Show help\n" +
 		"    -v, --version    Show version"
