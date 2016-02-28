@@ -1,6 +1,6 @@
 {
 	"name": "curly-turtle",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"description": "Web proxy for searching on Google privately.",
 	"repository": { 
 		"type": "git",
