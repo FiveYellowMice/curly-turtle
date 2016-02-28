@@ -11,6 +11,7 @@
 		<link rel="icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="apple-touch-icon" sizes="192x192" href="{{ program.baseurl }}/favicon-192.png">
 		<link rel="stylesheet" href="{{ program.baseurl }}/style.css">
+		{% if program.customcss %}<style>{{ program.customcss }}</style>{% endif %}
 	</head>
 
 	<body>
