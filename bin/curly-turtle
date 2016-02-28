@@ -43,7 +43,7 @@ if (argv.h || argv.help) {
 		"    -l, --ratelimit  Set the minimum time leap in miliseconds\n" +
 		"                     between two requests\n" +
 		"        --extproxy   Open search results in external proxy\n" +
-		"                     See https://bit.ly/1XB3vte for detials\n" +
+		"                     See https://git.io/v2alP for detials\n" +
 		"    -c, --config     Path of configuration file\n" +
 		"    -h, --help       Show help\n" +
 		"    -v, --version    Show version"
